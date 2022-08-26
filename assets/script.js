@@ -1,4 +1,4 @@
-var weatherReportUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
+var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
 // var today = moment('').format('L');
 var searchHistoryList = [];
 
@@ -10,11 +10,10 @@ var searchHistoryList = [];
 
 function currentCondition(city) {
 
-    var weatherReportUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
+    var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
 
-    var uviQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
-
-}
+    var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
+};
 $.ajax({
     url: queryURL,
     method: "GET"
@@ -166,4 +165,4 @@ if (searchHistoryArr !== null) {
     currentCondition(lastSearchedCity);
     console.log(`Last searched city: ${lastSearchedCity}`);
 }
-})
+});
