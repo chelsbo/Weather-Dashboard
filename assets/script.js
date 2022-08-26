@@ -16,7 +16,7 @@ function currentCondition(city) {
 }
 
 $.ajax({
-    url: queryURL,
+    url: uviQueryURL,
     method: "GET"
 }).then(function(cityWeatherResponse) {
     console.log(cityWeatherResponse);
