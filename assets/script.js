@@ -166,4 +166,4 @@ if (searchHistoryArr !== null) {
     currentCondition(lastSearchedCity);
     console.log(`Last searched city: ${lastSearchedCity}`);
 }
-});
+})
