@@ -130,6 +130,10 @@ $.ajax({
     }
 }); 
 
+let btn = document.createElement("button");
+btn.innerHTML = "Go";
+document.body.appendChild(btn);
+
 // add on click event listener 
 $("#searchBtn").on("click", function(event) {
 event.preventDefault();
