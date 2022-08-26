@@ -2,6 +2,8 @@ var weatherReportUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat
 // var today = moment('').format('L');
 var searchHistoryList = [];
 
+
+var apiKey = "0f5c27ef6ff60cee6ab8279707d74cb6";
 function currentCondition(city) {
 
     var weatherReportUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
@@ -10,7 +12,7 @@ function currentCondition(city) {
 
 }
 $.ajax({
-    url: queryURL;
+    url: queryURL,
     method: "GET"
 }).then(function(cityWeatherResponse) {
     console.log(cityWeatherResponse);
@@ -77,7 +79,6 @@ $.ajax({
             $("#uvIndexColor").css("background-color", "#B567A4").css("color", "white"); 
         };  
     });
-});
 
 
 // function for future condition
@@ -161,4 +162,4 @@ if (searchHistoryArr !== null) {
     currentCondition(lastSearchedCity);
     console.log(`Last searched city: ${lastSearchedCity}`);
 }
-})
+});
