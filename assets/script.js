@@ -44,6 +44,8 @@ function currentCondition(city) {
         }).then(function(cityWeatherResponse) {
             console.log(cityWeatherResponse); 
         //    lat = cityWeatherResponse.city.coord.lat;
+        lat = cityWeatherResponse.main.temp
+        lon = cityWeatherResponse.main.temp
         //   lon = cityWeatherResponse.city.coord.lon;
         });
     
