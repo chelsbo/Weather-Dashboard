@@ -13,7 +13,8 @@ function currentCondition(city) {
     var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
 
     var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
-};
+}
+
 $.ajax({
     url: queryURL,
     method: "GET"
@@ -158,11 +159,11 @@ currentCondition(listCity);
 // THEN I am presented with the last searched city forecast
 $(document).ready(function() {
 var searchHistoryArr = JSON.parse(localStorage.getItem("city"));
-
+})
 if (searchHistoryArr !== null) {
     var lastSearchedIndex = searchHistoryArr.length - 1;
     var lastSearchedCity = searchHistoryArr[lastSearchedIndex];
     currentCondition(lastSearchedCity);
     console.log(`Last searched city: ${lastSearchedCity}`);
 }
-});
+}
