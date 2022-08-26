@@ -1,4 +1,4 @@
-var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
+var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
 // var today = moment('').format('L');
 var searchHistoryList = [];
 
@@ -10,12 +10,17 @@ var searchHistoryList = [];
 
 function currentCondition(city) {
 
-    var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
+    var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
 
-    var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
+    var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
 }
-    var cityWeatherResponse = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
-$.ajax({
+    // var cityWeatherResponse = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
+
+    var cityWeatherResponse = [];
+
+    var iconURL = [];
+
+    $.ajax({
     url: uviQueryURL,
     method: "GET"
 }).then(function(cityWeatherResponse) {
@@ -37,7 +42,7 @@ $.ajax({
     // the wind speed
     var currentCity = $(`
         <h2 id="currentCity">
-        ${cityWeatherResponse.name} ${today} <img src="${iconURL}" alt="${cityWeatherResponse.weather[0].description}" />
+        ${cityWeatherResponse.name} ${today} <img src="${iconURL}" alt="${cityWeatherResponse.weather.description}" />
         </h2>
         <p>Temperature: ${cityWeatherResponse.main.temp} °F</p>
         <p>Humidity: ${cityWeatherResponse.main.humidity}\%</p>
@@ -49,7 +54,7 @@ $.ajax({
     // UV index
     var lat = cityWeatherResponse.coord.lat;
     var lon = cityWeatherResponse.coord.lon;
-    var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}';
+    var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
 
     $.ajax({
         url: uviQueryURL,
@@ -89,7 +94,7 @@ $.ajax({
 function futureCondition(lat, lon) {
 
 // THEN I am presented with a 5-day forecast
-// var futureURL = "https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
+// var futureURL = "https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${0f5c27ef6ff60cee6ab8279707d74cb6}`;
 
 $.ajax({
     url: futureURL,
