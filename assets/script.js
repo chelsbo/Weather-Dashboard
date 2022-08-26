@@ -6,9 +6,11 @@ function currentCondition(city) {
 
     var weatherReportUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
 
+    var uviQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
+
 }
 $.ajax({
-    url: queryURL,
+    url: queryURL;
     method: "GET"
 }).then(function(cityWeatherResponse) {
     console.log(cityWeatherResponse);
