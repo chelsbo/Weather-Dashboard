@@ -1,27 +1,59 @@
-var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
+// var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
 // var today = moment('').format('L');
-var searchHistoryList = [];
+// var searchHistoryList = [];
 
 
 var apiKey = "0f5c27ef6ff60cee6ab8279707d74cb6";
 var today = moment().format('L');
 var searchHistoryList = [];
+var description = [];
 
-
+// let btn = document.createElement("button");
+// btn.innerHTML = "Go";
+// document.body.appendChild(btn);
+$("#button-go").click(function() {
+    var inputBox = $(".form-input").val()
+   console.log(inputBox)
+   currentCondition(inputBox)
+})
+// var inputBox = $(".form-input").val()
+var requestUrl, lat, lon, weath;
 function currentCondition(city) {
-
-    var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
-
-    var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
+   requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
+    console.log(requestUrl)
+    // var weatherReportUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
+    $.ajax({
+        url: requestUrl,
+        method: "GET"
+    }).then(function(cityWeatherResponse) {
+        console.log(cityWeatherResponse); 
+       lat = cityWeatherResponse.city.coord.lat;
+      lon = cityWeatherResponse.city.coord.lon;
+      gitWeather(lat, lon);
+    });
+    // gitWeather(lat, lon);
+    // var uviQueryURL = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
 }
     // var cityWeatherResponse = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={0f5c27ef6ff60cee6ab8279707d74cb6}';
-
+    function gitWeather(lat, lon) {
+        console.log("git")
+        weatherReportUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        $.ajax({
+            url: weatherReportUrl,
+            method: "GET"
+        }).then(function(cityWeatherResponse) {
+            console.log(cityWeatherResponse); 
+        //    lat = cityWeatherResponse.city.coord.lat;
+        //   lon = cityWeatherResponse.city.coord.lon;
+        });
+    
+    }
     var cityWeatherResponse = [];
 
     var iconURL = [];
 
     $.ajax({
-    url: uviQueryURL,
+    url: requestUrl,
     method: "GET"
 }).then(function(cityWeatherResponse) {
     console.log(cityWeatherResponse);
@@ -48,6 +80,8 @@ function currentCondition(city) {
         <p>Humidity: ${cityWeatherResponse.main.humidity}\%</p>
         <p>Wind Speed: ${cityWeatherResponse.wind.speed} MPH</p>
     `);
+
+    // function(currentCity)
 
     $("#cityDetail").append(currentCity);
 
@@ -135,9 +169,9 @@ $.ajax({
     }
 }); 
 
-let btn = document.createElement("button");
-btn.innerHTML = "Go";
-document.body.appendChild(btn);
+// let btn = document.createElement("button");
+// btn.innerHTML = "Go";
+// document.body.appendChild(btn);
 
 // add on click event listener 
 $("#searchBtn").on("click", function(event) {
