@@ -4,6 +4,10 @@ var searchHistoryList = [];
 
 
 var apiKey = "0f5c27ef6ff60cee6ab8279707d74cb6";
+var today = moment().format('L');
+var searchHistoryList = [];
+
+
 function currentCondition(city) {
 
     var weatherReportUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
